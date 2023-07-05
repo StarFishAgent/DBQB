@@ -1,0 +1,10 @@
+/* Write your T-SQL query statement below */
+SELECT Name AS Customers
+FROM Customers a
+LEFT JOIN Orders b
+ON a.id=b.CustomerId
+WHERE b.CustomerId IS NULL
+
+
+思路:
+使用左连接筛选出所有客户的订购情况，再从where条件中筛选该客户是否在订单表存在顾客ID(CustomerId)，如果为null即是从不订购的客户

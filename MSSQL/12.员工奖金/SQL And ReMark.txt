@@ -1,0 +1,11 @@
+/* Write your T-SQL query statement below */
+SELECT a.name , b.bonus
+FROM Employee as a 
+LEFT JOIN Bonus as b
+ON b.empId= a.empId
+WHERE  b.bonus < 1000 OR B.bonus IS NULL
+
+
+ReMark: Some developers maym write before OR B.bonus IS NULL. This situation will cause your data over your hope. A bonus of 2000 or more will appear in your results.. That you can add code OR B.bonus IS NULL to resolve.
+
+备注：有些开发人员会写到 OR B.bonus IS NULL 之前。这种情况将导致您的数据超出您的希望。2000奖金或超过2000奖金将出现在您的结果中。您可以添加的代码 OR B.bonus IS NULL 来解决此问题。

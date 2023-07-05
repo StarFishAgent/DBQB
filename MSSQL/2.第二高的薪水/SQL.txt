@@ -1,0 +1,11 @@
+select 
+case 
+when count(*) <=1 then null
+else (
+select top 1 salary 
+from Employee
+where salary <(select max(salary) from Employee)
+order by salary desc  
+)
+end as SecondHighestSalary
+from Employee

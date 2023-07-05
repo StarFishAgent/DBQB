@@ -1,0 +1,23 @@
+CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
+BEGIN
+    RETURN (
+        /* Write your T-SQL query statement below. */
+        SELECT CASE
+         WHEN MAX(number) < @N THEN NULL
+         ELSE (
+             SELECT SALARY
+             FROM (
+                 SELECT SALARY, ROW_NUMBER() OVER (ORDER BY SALARY DESC) AS number
+                 FROM Employee
+                 GROUP BY SALARY
+             ) AS t
+             WHERE number = @N
+         )
+       END AS getNthHighestSalary
+FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY SALARY DESC) AS number
+    FROM Employee
+    GROUP BY SALARY
+) AS t
+    );
+END
