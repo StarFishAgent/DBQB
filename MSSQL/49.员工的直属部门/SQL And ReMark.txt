@@ -1,0 +1,14 @@
+/* Write your T-SQL query statement below */
+select employee_id,department_id from Employee
+where primary_flag= 'Y'
+union 
+SELECT employee_id, department_id
+FROM (
+    SELECT 
+        employee_id,
+        department_id,
+        primary_flag,
+        COUNT(*) OVER (PARTITION BY employee_id) AS occurrence_count
+    FROM Employee
+) subquery
+WHERE occurrence_count = 1;

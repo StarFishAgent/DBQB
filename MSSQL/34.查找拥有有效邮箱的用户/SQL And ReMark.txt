@@ -1,0 +1,4 @@
+/* Write your T-SQL query statement below */
+SELECT *
+FROM Users
+WHERE PATINDEX('[A-Za-z]%@leetcode.com', mail) = 1 and PATINDEX('%[^a-zA-Z0-9/_.-]%@leetcode.com', mail) = 0;

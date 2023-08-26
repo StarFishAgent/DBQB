@@ -1,0 +1,10 @@
+/* Write your T-SQL query statement below */
+SELECT
+TOP 1 q.person_name
+FROM (
+SELECT person_id,person_name,weight,turn,
+SUM(weight) OVER (ORDER BY turn) AS cumulative_weight
+FROM Queue
+) q
+WHERE q.cumulative_weight <= 1000
+ORDER BY turn DESC;

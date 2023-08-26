@@ -1,0 +1,8 @@
+/* Write your T-SQL query statement below */
+SELECT A.product_id ,
+ROUND((SUM(B.units * A.price)*1.0) / SUM(units),2) as average_price
+FROM Prices A
+join UnitsSold B ON A.product_id = B.product_id
+WHERE DATEDIFF(day, A.start_date, B.purchase_date) >= 0
+AND DATEDIFF(day, B.purchase_date , A.end_date) >= 0
+GROUP BY A.product_id

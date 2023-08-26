@@ -1,0 +1,7 @@
+/* Write your T-SQL query statement below */
+SELECT user_id, MAX(time_stamp) last_stamp
+FROM Logins 
+WHERE DATEDIFF(DAY,time_stamp,'2020-12-31')>=0
+AND DATEDIFF(DAY,'2020-1-1',time_stamp) >=0
+GROUP BY user_id
+ORDER BY user_id DESC
